@@ -37,9 +37,12 @@ namespace AddressBook_DB
             Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Edit.firstName, Edit.lastName, Edit.address, Edit.city, Edit.state, Edit.zip, Edit.phoneNumber, Edit.BookName, Edit.BookType);
             */
 
-            AddressModel Delet = new AddressModel();
+            /*AddressModel Delet = new AddressModel();
             Delet.firstName="Imran";
             Repo.DeleteContact(Delet);
+            */
+            Repo.RetriveRecord();
+
         }
     }
 }

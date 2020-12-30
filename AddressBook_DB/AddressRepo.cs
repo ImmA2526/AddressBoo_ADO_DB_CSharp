@@ -122,6 +122,45 @@ namespace AddressBook_DB
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// UC 5 Retrives the record.
+        /// </summary>
+        /// <exception cref="Exception"></exception>
+        public void RetriveRecord()
+        {
+            try
+            {
+                AddressModel Fetch = new AddressModel();
+                using (this.Connection)
+                {
+                    using (SqlCommand fetch = new SqlCommand(@"Select * from AddressBook WHERE city='pune' OR state='Maha';", this.Connection))
+                    {
+                        this.Connection.Open();
+                        using (SqlDataReader reader = fetch.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Fetch.firstName = reader.GetString(0);
+                                Fetch.lastName = reader.GetString(1);
+                                Fetch.address = reader.GetString(2);
+                                Fetch.city = reader.GetString(3);
+                                Fetch.state = reader.GetString(4);
+                                Fetch.zip = reader.GetString(5);
+                                Fetch.phoneNumber = reader.GetString(6);
+                                Fetch.BookName = reader.GetString(7);
+                                Fetch.BookType = reader.GetString(8);
+                                Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Fetch.firstName, Fetch.lastName, Fetch.address, Fetch.city, Fetch.state, Fetch.zip, Fetch.phoneNumber, Fetch.BookName, Fetch.BookType);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
 
