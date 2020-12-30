@@ -161,6 +161,36 @@ namespace AddressBook_DB
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// UC 6 Count By City S
+        /// </summary>
+        public void CountByCityState()
+        {
+            try
+            {
+                using (this.Connection)
+                {
+                    using (SqlCommand CMD = new SqlCommand(@"select COUNT(firstName) from AddressBook WHERE city='Pune' AND  state='maha';", this.Connection))
+                    {
+                        this.Connection.Open();
+                        using (SqlDataReader reader = CMD.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var counts = reader.GetInt32(0);
+                                Console.WriteLine("number of person belongs City'Pune' and state 'Maharashtra':{0} ", counts);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
     }
 }
 

@@ -41,7 +41,8 @@ namespace AddressBook_DB
             Delet.firstName="Imran";
             Repo.DeleteContact(Delet);
             */
-            Repo.RetriveRecord();
+            //Repo.RetriveRecord();
+            Repo.CountByCityState();
 
         }
     }
