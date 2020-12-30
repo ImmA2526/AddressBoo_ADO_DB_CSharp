@@ -97,6 +97,31 @@ namespace AddressBook_DB
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// U4 Delete Contact
+        /// </summary>
+        /// <param name="Model"></param>
+        public void DeleteContact(AddressModel Model)
+        {
+            try
+            {
+                using (this.Connection)
+                {
+                    SqlCommand CMD = new SqlCommand("SpDelet_Address", this.Connection);
+                    CMD.CommandType = CommandType.StoredProcedure;
+                    CMD.Parameters.AddWithValue("@firstName", Model.firstName);
+                    this.Connection.Open();
+                    CMD.ExecuteNonQuery();
+                    Console.WriteLine("Contact Deleted Success...");
+                    this.Connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
 

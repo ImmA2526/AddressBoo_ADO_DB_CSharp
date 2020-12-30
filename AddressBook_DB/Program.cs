@@ -23,7 +23,7 @@ namespace AddressBook_DB
             Console.WriteLine("**********Insrted Recod**********");
             Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}",Add.firstName,Add.lastName,Add.address,Add.city,Add.state,Add.zip,Add.phoneNumber,Add.BookName,Add.BookType);
            */
-            AddressModel Edit = new AddressModel();
+            /*AddressModel Edit = new AddressModel();
             Edit.firstName = "simran";
             Edit.lastName = "pathan";
             Edit.address = "Dighi";
@@ -35,6 +35,11 @@ namespace AddressBook_DB
             Edit.BookType = "Friend";
             Repo.EditRecordUsingName(Edit);
             Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Edit.firstName, Edit.lastName, Edit.address, Edit.city, Edit.state, Edit.zip, Edit.phoneNumber, Edit.BookName, Edit.BookType);
+            */
+
+            AddressModel Delet = new AddressModel();
+            Delet.firstName="Imran";
+            Repo.DeleteContact(Delet);
         }
     }
 }
