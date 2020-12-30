@@ -43,7 +43,8 @@ namespace AddressBook_DB
             */
             //Repo.RetriveRecord();
             //Repo.CountByCityState();
-            Repo.SortRecord();
+            //Repo.SortRecord();
+            Repo.CountByPerson();
 
         }
     }

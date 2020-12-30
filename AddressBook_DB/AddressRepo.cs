@@ -229,6 +229,43 @@ namespace AddressBook_DB
                 throw new Exception(e.Message);
             }
         }
+
+        /// <summary>
+        /// UC 8 Count By Type
+        /// </summary>
+        public void CountByPerson()
+        {
+            try
+            {
+                using (this.Connection)
+                {
+                    using (SqlCommand CMD = new SqlCommand(@"select COUNT(firstName) from AddressBook WHERE BookType='Friends'; select COUNT(firstName) from AddressBook WHERE BookType='Family'; ", this.Connection))
+                    {
+                        this.Connection.Open();
+                        using (SqlDataReader reader = CMD.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var counts = reader.GetInt32(0);
+                                Console.WriteLine("number of person belongs AddressType 'Family' ':{0} ", counts);
+                            }
+                            if (reader.NextResult())
+                            {
+                                while (reader.Read())
+                                {
+                                    var countPerson = reader.GetInt32(0);
+                                    Console.WriteLine("number of person belongs AddressType 'Friends' ':{0} ", countPerson);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
     }
 }
-
