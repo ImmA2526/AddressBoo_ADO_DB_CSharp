@@ -191,6 +191,44 @@ namespace AddressBook_DB
             }
         }
 
+        /// <summary>
+        /// UC 7 Sort By name
+        /// </summary>
+        public void SortRecord()
+        {
+            try
+            {
+                AddressModel sorting = new AddressModel();
+                using (this.Connection)
+                {
+                    using (SqlCommand sorts = new SqlCommand(@"Select * from AddressBook WHERE city='pune' ORDER By firstName;", this.Connection))
+                    {
+                        this.Connection.Open();
+                        using (SqlDataReader reader = sorts.ExecuteReader())
+                        {
+                            Console.WriteLine("*********Sorted List******");
+                            while (reader.Read())
+                            {
+                                sorting.firstName = reader.GetString(0);
+                                sorting.lastName = reader.GetString(1);
+                                sorting.address = reader.GetString(2);
+                                sorting.city = reader.GetString(3);
+                                sorting.state = reader.GetString(4);
+                                sorting.zip = reader.GetString(5);
+                                sorting.phoneNumber = reader.GetString(6);
+                                sorting.BookName = reader.GetString(7);
+                                sorting.BookType = reader.GetString(8);
+                                Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}", sorting.firstName, sorting.lastName, sorting.address, sorting.city, sorting.state, sorting.zip, sorting.phoneNumber, sorting.BookName, sorting.BookType);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
 

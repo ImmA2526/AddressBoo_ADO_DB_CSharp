@@ -42,7 +42,8 @@ namespace AddressBook_DB
             Repo.DeleteContact(Delet);
             */
             //Repo.RetriveRecord();
-            Repo.CountByCityState();
+            //Repo.CountByCityState();
+            Repo.SortRecord();
 
         }
     }
