@@ -9,20 +9,33 @@ namespace AddressBook_DB
             Console.WriteLine("************Welcome To AddRessBook DB************");
             AddressRepo Repo = new AddressRepo();
             Repo.CheckConnection();
+            ///Refactor Code Added in Two Book//
             AddressModel Add = new AddressModel();
-            Add.firstName = "Imran";
+            Add.firstName = "SImran";
             Add.lastName = "Shaikh";
             Add.address="Dighi";
             Add.city="Pune";
             Add.state="Maha";
             Add.zip="456789";
             Add.phoneNumber="9876543212";
-            Add.BookName="Family";
+            Add.BookName= "Family_Book";
+            Add.BookType = "Family";
+            Console.WriteLine("**********Insrted Recod**********");
+            Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Add.firstName, Add.lastName, Add.address, Add.city, Add.state, Add.zip, Add.phoneNumber, Add.BookName, Add.BookType);
+
+            Add.firstName = "Nijam";
+            Add.lastName = "Sayyad";
+            Add.address = "Beed";
+            Add.city = "Latur";
+            Add.state = "Dubai";
+            Add.zip = "456787";
+            Add.phoneNumber = "9076543212";
+            Add.BookName = "Friend_Book";
             Add.BookType = "Friend";
-            /*Repo.AddContacts(Add);
+            Repo.AddContacts(Add);
             Console.WriteLine("**********Insrted Recod**********");
             Console.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8}",Add.firstName,Add.lastName,Add.address,Add.city,Add.state,Add.zip,Add.phoneNumber,Add.BookName,Add.BookType);
-           */
+           
             /*AddressModel Edit = new AddressModel();
             Edit.firstName = "simran";
             Edit.lastName = "pathan";
@@ -44,8 +57,7 @@ namespace AddressBook_DB
             //Repo.RetriveRecord();
             //Repo.CountByCityState();
             //Repo.SortRecord();
-            Repo.CountByPerson();
-
+            //Repo.CountByPerson();
         }
     }
 }

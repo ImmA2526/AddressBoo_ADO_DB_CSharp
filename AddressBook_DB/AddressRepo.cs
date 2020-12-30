@@ -28,7 +28,7 @@ namespace AddressBook_DB
         }
 
         /// <summary>
-        /// UC 2 Add Record
+        /// UC 2 Add Record UC 9: Refactor
         /// </summary>
         /// <param name="Model"></param>
         /// <returns></returns>
@@ -51,6 +51,25 @@ namespace AddressBook_DB
                     CMD.Parameters.AddWithValue("@BookType", Model.BookName);
                     this.Connection.Open();
                     var result = CMD.ExecuteNonQuery();
+                    this.Connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+
+                    SqlCommand CMD2 = new SqlCommand("SpAdd_Address", this.Connection);
+                    CMD2.CommandType = CommandType.StoredProcedure;
+                    CMD2.Parameters.AddWithValue("@firstName", Model.firstName);
+                    CMD2.Parameters.AddWithValue("@lastName", Model.lastName);
+                    CMD2.Parameters.AddWithValue("@address", Model.address);
+                    CMD2.Parameters.AddWithValue("@city", Model.city);
+                    CMD2.Parameters.AddWithValue("@state", Model.state);
+                    CMD2.Parameters.AddWithValue("@zip", Model.zip);
+                    CMD2.Parameters.AddWithValue("@phoneNumber", Model.phoneNumber);
+                    CMD2.Parameters.AddWithValue("@BookName", Model.BookType);
+                    CMD2.Parameters.AddWithValue("@BookType", Model.BookName);
+                    this.Connection.Open();
+                    var result2 = CMD2.ExecuteNonQuery();
                     this.Connection.Close();
                     if (result != 0)
                     {
